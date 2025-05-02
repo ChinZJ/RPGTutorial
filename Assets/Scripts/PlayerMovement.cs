@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Controls player movement.
+// Controls movement logic.
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5; // How fast player moves.
