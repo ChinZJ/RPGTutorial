@@ -7,12 +7,15 @@ public class EnemyCombat : MonoBehaviour
     public int damage = 1;
 
     /**
-    * Triggers upon collision with object.
+    * Triggers upon collision with Player object.
     *
     * @param collision The object of collision.
     */
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-damage);
+        }
     }
 }
