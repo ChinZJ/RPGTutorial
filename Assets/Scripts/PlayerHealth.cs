@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public TMP_Text healthText;
     public Animator healthTextAnim;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created.
     private void Start()
     {
         healthText.text = "HP: " + currentHealth + " / " + maxHealth;
