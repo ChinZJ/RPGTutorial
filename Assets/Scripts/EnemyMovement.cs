@@ -46,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
         if (enemyState == EnemyState.Chasing)
         {
             Chase();
-        } else if (enemyState == EnemyState.Attacking)
+        } else if (enemyState == EnemyState.AttackingSide)
         {
             rb.linearVelocity = Vector2.zero; // Stop movement when attacking
         }
@@ -92,7 +92,30 @@ public class EnemyMovement : MonoBehaviour
                     && (attackCooldownTimer <= 0))
             {
                 attackCooldownTimer = attackCooldown;
-                ChangeState(EnemyState.Attacking);
+
+                // Calculate angle between enemy and player.
+                Vector2 direction = (player.position - transform.position).normalized;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                // Normalize angle to be between 0 and 360.
+                if (angle < 0)
+                {
+                    angle += 360;
+                }
+                    
+                // Determine animation to use.
+                if (angle > 45 && angle < 135)
+                {
+                    ChangeState(EnemyState.AttackingUp);
+                }
+                else if (angle > 225 && angle < 315)
+                {
+                    ChangeState(EnemyState.AttackingDown);
+                }
+                else
+                {
+                    ChangeState(EnemyState.AttackingSide);
+                }
+
             } else if (Vector2.Distance(transform.position, player.position) > attackRange)
             {
                 ChangeState(EnemyState.Chasing);
@@ -116,8 +139,14 @@ public class EnemyMovement : MonoBehaviour
             case EnemyState.Chasing:
                 anim.SetBool("isChasing", false);
                 break;
-            case EnemyState.Attacking:
-                anim.SetBool("isAttacking", false);
+            case EnemyState.AttackingSide:
+                anim.SetBool("isAttackingSide", false);
+                break;
+            case EnemyState.AttackingUp:
+                anim.SetBool("isAttackingUp", false);
+                break;
+            case EnemyState.AttackingDown:
+                anim.SetBool("isAttackingDown", false);
                 break;
             // Could throw exception as a default.
         }
@@ -134,9 +163,15 @@ public class EnemyMovement : MonoBehaviour
             case EnemyState.Chasing:
                 anim.SetBool("isChasing", true);
                 break;
-            case EnemyState.Attacking:
-                anim.SetBool("isAttacking", true);
+            case EnemyState.AttackingSide:
+                anim.SetBool("isAttackingSide", true);
                 break;
+            case EnemyState.AttackingUp:
+                anim.SetBool("isAttackingUp", true);
+                break;
+            case EnemyState.AttackingDown:
+                anim.SetBool("isAttackingDown", true);
+                break;    
             // Could throw exception as a default.
         }
     }
@@ -153,6 +188,8 @@ public enum EnemyState
 {
     Idle,
     Chasing,
-    Attacking,
+    AttackingSide,
+    AttackingUp,
+    AttackingDown,
 
 }
