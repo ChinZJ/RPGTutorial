@@ -116,8 +116,12 @@ public class EnemyMovement : MonoBehaviour
                     ChangeState(EnemyState.AttackingSide);
                 }
 
-            } else if (Vector2.Distance(transform.position, player.position) > attackRange)
+            } else if ((Vector2.Distance(transform.position, player.position) > attackRange) &&
+                    !((enemyState == EnemyState.AttackingDown) ||
+                    (enemyState == EnemyState.AttackingUp) ||
+                    (enemyState == EnemyState.AttackingSide)))
             {
+                // The 
                 ChangeState(EnemyState.Chasing);
             }
         } else 
