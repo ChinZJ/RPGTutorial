@@ -10,6 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public int facingDirection = 1; // Default facing right.
     public Rigidbody2D rb; // Handles physics.
     public Animator anim; // For animations.
+    public PlayerCombat playerCombat;
+
+    // Update Player upon attack.
+    void Update()
+    {
+        if (Input.GetButtonDown("Attack"))
+        {
+            playerCombat.Attack();
+        }
+    }
 
     // Update is called 50 times per frame.
     void FixedUpdate()
