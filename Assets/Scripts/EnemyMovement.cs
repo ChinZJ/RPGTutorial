@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     public Transform detectionPoint; // Centre point of enemy circle of sight.
 
     private float attackRange = 1.2F;
-    public float attackCooldown = 2;
+    public float attackCooldown;
     private float attackCooldownTimer;   
 
     public float playerDetectRange = 5; 
