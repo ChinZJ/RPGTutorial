@@ -5,7 +5,6 @@ using UnityEngine;
 // Controls movement logic.
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5; // How fast player moves.
     private bool isKnockedback;
     public int facingDirection = 1; // Default facing right.
     public Rigidbody2D rb; // Handles physics.
@@ -43,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetFloat("vertical", Mathf.Abs(vertical));
 
             // Note: original code uses velocity but it is obsolete.
-            rb.linearVelocity = new Vector2(horizontal, vertical) * speed;
+            rb.linearVelocity = new Vector2(horizontal, vertical) * StatsManager.Instance.speed;
         }
         
     }
