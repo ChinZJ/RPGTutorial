@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private bool isKnockedback;
-    public int facingDirection = 1; // Default facing right.
+    private int facingDirection = 1; // Default facing right.
     public Rigidbody2D rb; // Handles physics.
     public Animator anim; // For animations.
     public PlayerCombat playerCombat;
