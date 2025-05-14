@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Stores all Player stats.
 public class StatsManager : MonoBehaviour
 {
     public static StatsManager Instance;
