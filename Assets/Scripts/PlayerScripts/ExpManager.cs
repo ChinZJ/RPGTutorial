@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Governs Player experience points.
 public class ExpManager : MonoBehaviour
 {
     public int level;
