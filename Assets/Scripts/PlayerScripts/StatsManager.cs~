@@ -1,0 +1,40 @@
+using UnityEngine;
+
+public class StatsManager : MonoBehaviour
+{
+    public static StatsManager Instance;
+<<<<<<< HEAD
+    
+    [Header("Combat Stats")] // Header within Unity inspector bar.
+=======
+
+    [Header("Combat Stats")]
+>>>>>>> add-stats
+    public int damage;
+    public float weaponRange;
+    public float knockbackForce;
+    public float knockbackTime;
+    public float stunTime;
+
+    [Header("Movement Stats")]
+    public int speed;
+
+    [Header("Health Stats")]
+    public int maxHealth;
+    public int currentHealth;
+
+<<<<<<< HEAD
+    // Ensures only a single isntance of StatsManager exists.
+=======
+>>>>>>> add-stats
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
+    }
+}
