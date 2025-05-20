@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -108,10 +108,10 @@ RectTransform:
   - {fileID: 4100656525154882934}
   m_Father: {fileID: 3773742377599426936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 21.0867, y: -29.592201}
-  m_SizeDelta: {x: -42.1732, y: -59.1844}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 51.6865, y: -73.69411}
+  m_SizeDelta: {x: -65.6001, y: -23.3961}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &536674888979549752
 CanvasRenderer:
@@ -185,8 +185,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -21.5, y: 13}
-  m_SizeDelta: {x: 43, y: 26}
+  m_AnchoredPosition: {x: 32.87, y: -9.5347}
+  m_SizeDelta: {x: 65.741, y: 19.069}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1167401979142474497
 CanvasRenderer:
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/5
+  m_text: Locked
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 1.9554443, y: 0, z: -0.39111328, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 8718711493712798066}
   - component: {fileID: 2700752873182169243}
   - component: {fileID: 5797143321241659951}
+  - component: {fileID: 7708117795364674289}
   m_Layer: 0
   m_Name: SkillButton
   m_TagString: Untagged
@@ -409,3 +410,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7708117795364674289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419997698030121053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092ab47458aade14b991e395a9429785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillSO: {fileID: 0}
+  skillIcon: {fileID: 36002300613517262}
+  currentLevel: 0
+  isUnlocked: 0
+  skillLevelText: {fileID: 5753396467009983026}
+  skillButton: {fileID: 5797143321241659951}
