@@ -14,6 +14,8 @@ public class SkillTreeManager : MonoBehaviour
     {
         SkillSlot.OnAbilityPointSpent += HandleAbilityPointsSpent;
         SkillSlot.OnSkillMaxed += HandleSkillMaxed;
+
+        ExpManager.OnLevelUp += UpdateAbilityPoints;
     }
 
     // Unsubscribe from skill slot events.
@@ -21,6 +23,8 @@ public class SkillTreeManager : MonoBehaviour
     {
         SkillSlot.OnAbilityPointSpent -= HandleAbilityPointsSpent;
         SkillSlot.OnSkillMaxed -= HandleSkillMaxed;
+
+        ExpManager.OnLevelUp -= UpdateAbilityPoints;
     }
 
     // Adds listeners to all skills for upgrading.
