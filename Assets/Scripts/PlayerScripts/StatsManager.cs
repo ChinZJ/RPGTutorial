@@ -1,10 +1,13 @@
+using TMPro;
 using UnityEngine;
 
 // Stores all Player stats.
 public class StatsManager : MonoBehaviour
 {
     public static StatsManager Instance;
-    
+
+    public TMP_Text healthText;
+
     [Header("Combat Stats")] // Header within Unity inspector bar.
     public int damage;
     public float weaponRange;
@@ -25,9 +28,16 @@ public class StatsManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-        } else
+        }
+        else
         {
             Destroy(gameObject);
         }
+    }
+
+    public void UpdateMaxHealth(int amount)
+    {
+        maxHealth += amount;
+        healthText.text = "HP: " + currentHealth + " / " + maxHealth;
     }
 }

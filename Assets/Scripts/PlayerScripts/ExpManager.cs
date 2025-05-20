@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework.Internal;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class ExpManager : MonoBehaviour
     
     public Slider expSlider;
     public TMP_Text currentLevelText;
+
+    public static event Action<int> OnLevelUp;
 
     // Handles main logic of Player experience gain.
     public void GainExperience(int amount)
@@ -32,6 +35,8 @@ public class ExpManager : MonoBehaviour
         level++;
         currentExp -= expToLevel;
         expToLevel = Mathf.RoundToInt(expToLevel * expGrowthMultiplier);
+
+        OnLevelUp?.Invoke(1);
     }
 
     // Updates Player experience leve UI.
