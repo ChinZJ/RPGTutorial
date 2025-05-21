@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private bool isKnockedback;
+    public bool isShooting;
     private int facingDirection = 1; // Default facing right.
     public Rigidbody2D rb; // Handles physics.
     public Animator anim; // For animations.
@@ -23,27 +25,30 @@ public class PlayerMovement : MonoBehaviour
     // Update is called 50 times per frame.
     void FixedUpdate()
     {
-        if (isKnockedback == false)
+        if (isShooting == true)
         {
-            // Obtain inputs.
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-
-            // Ensures player is facing the correct direction.
-            if ((horizontal > 0 && transform.localScale.x < 0) || 
-                    (horizontal < 0 && transform.localScale.x > 0))
+            rb.linearVelocity = Vector2.zero;
+        } else if (isKnockedback == false)
             {
-                Flip();
+                // Obtain inputs.
+                float horizontal = Input.GetAxis("Horizontal");
+                float vertical = Input.GetAxis("Vertical");
+
+                // Ensures player is facing the correct direction.
+                if ((horizontal > 0 && transform.localScale.x < 0) ||
+                        (horizontal < 0 && transform.localScale.x > 0))
+                {
+                    Flip();
+                }
+
+                // Sets animator's floats to mirror absolute input value.
+                // Conditions within the animation is set > 0.1.
+                anim.SetFloat("horizontal", Mathf.Abs(horizontal));
+                anim.SetFloat("vertical", Mathf.Abs(vertical));
+
+                // Note: original code uses velocity but it is obsolete.
+                rb.linearVelocity = new Vector2(horizontal, vertical) * StatsManager.Instance.speed;
             }
-
-            // Sets animator's floats to mirror absolute input value.
-            // Conditions within the animation is set > 0.1.
-            anim.SetFloat("horizontal", Mathf.Abs(horizontal));
-            anim.SetFloat("vertical", Mathf.Abs(vertical));
-
-            // Note: original code uses velocity but it is obsolete.
-            rb.linearVelocity = new Vector2(horizontal, vertical) * StatsManager.Instance.speed;
-        }
         
     }
 
