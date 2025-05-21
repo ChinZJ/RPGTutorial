@@ -13,8 +13,12 @@ public class Arrow : MonoBehaviour
     public float knockbackForce;
     public float knockbackTime;
     public float stunTime;
-    
+
     public LayerMask enemyLayer;
+    public LayerMask obstacleLayer; // Layers that the arrow sticks into.
+
+    public SpriteRenderer sr; // Allows change of arrow appearance.
+    public Sprite buriedSprite; // Upon lodging of arrow object.
 
     void Start()
     {
@@ -38,6 +42,21 @@ public class Arrow : MonoBehaviour
             collision.gameObject.GetComponent<EnemyHealth>().ChangeHealth(-damage);
             collision.gameObject.GetComponent<EnemyKnockback>()
                     .Knockback(transform, knockbackForce, knockbackTime, stunTime);
+            AttachToTarget(collision.gameObject.transform);
         }
+        else if ((obstacleLayer.value & (1 << collision.gameObject.layer)) > 0)
+        {
+            AttachToTarget(collision.gameObject.transform);
+        }
+    }
+
+    private void AttachToTarget(Transform target)
+    {
+        sr.sprite = buriedSprite;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic; // No longer reacts to kinematics.
+
+        transform.SetParent(target); // Arrow follows target.
     }
 }
